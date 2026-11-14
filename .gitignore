@@ -1,0 +1,9 @@
+*.tsbuildinfo
+.DS_Store
+.env
+.env.*
+dist
+model/.venv
+model/__pycache__
+model/oag_raw/
+node_modules

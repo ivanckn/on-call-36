@@ -1,0 +1,51 @@
+/* Design tokens. Modern operations dashboard: soft grey-green canvas, white rounded cards, one jade brand colour. */
+:root {
+  --bg: #f2f5f5;
+  --surface: #ffffff;
+  --surface-2: #f6f8f8;
+  --text: #1d2a2c;
+  --text-2: #5b686b;
+  --text-3: #8a9698;
+  --line: #e3e9e9;
+
+  --green: #006564;
+  --green-hover: #004f4e;
+  --green-2: #0b7f7b;
+  --tint: #e5f1f0;
+  --tint-2: #cde5e2;
+
+  /* Soft tile surfaces, decorative only (never data encoding) */
+  --sand: #fff3e1; --sand-ink: #8f5600;
+  --sky: #e9f1fc; --sky-ink: #285ea3;
+  --rose: #fdeceb; --rose-ink: #a8261e;
+  --violet: #f0ecfa; --violet-ink: #573ea0;
+
+  /* Status: reserved, always with a label */
+  --ok: #0f7a6a; --ok-bg: #e2f3ef;
+  --caution: #9a6100; --caution-bg: #fff1da;
+  --alert: #b3261e; --alert-bg: #fde7e6;
+  --none-bg: #edf2f2;
+
+  /* Service tier: ordinal, one jade ramp from most to least urgent */
+  --tier-PRS: #003e3d; --tier-PR1: #006564; --tier-PR2: #3b8f8b; --tier-PR3: #92c6c2; --tier-GEN: #dbe9e7;
+
+  --font: 'Figtree', 'PingFang TC', 'Noto Sans TC', 'Microsoft JhengHei', system-ui, sans-serif;
+  --font-num: 'Outfit', 'Figtree', 'PingFang TC', system-ui, sans-serif;
+
+  --fs-xs: 13px;
+  --fs-sm: 14px;
+  --fs-body: 16px;
+  --fs-card: 18px;
+  --fs-section: 22px;
+  --fs-page: 30px;
+  --fs-number: 36px;
+
+  --sidebar: 256px;
+  --gap: 24px;
+  --pad: 24px;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+  --shadow: 0 1px 2px rgba(18, 48, 48, 0.04), 0 8px 24px rgba(18, 48, 48, 0.06);
+  --shadow-lg: 0 2px 4px rgba(18, 48, 48, 0.05), 0 16px 40px rgba(18, 48, 48, 0.1);
+}

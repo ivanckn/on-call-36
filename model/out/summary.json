@@ -1,0 +1,22 @@
+{
+ "shipments": 60,
+ "Placed automatically": 26,
+ "Placed, promise missed": 1,
+ "No action needed": 30,
+ "Needs a person": 3,
+ "objective": 8658,
+ "solverStatus": "feasible_incumbent",
+ "regulatoryStatusOfAssigned": {
+  "ELIGIBLE_FOR_PLANNING": 57
+ },
+ "solver": {
+  "method": "Two stage stochastic mixed integer program (HiGHS via SciPy), solved per lane",
+  "lanes": 3,
+  "scenarios": 40,
+  "binaryVariables": 9121,
+  "continuousVariables": 0,
+  "constraints": 9362,
+  "solveSeconds": 5.42,
+  "optimalityGap": 0.002400507748504689
+ }
+}

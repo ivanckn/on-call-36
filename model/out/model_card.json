@@ -1,0 +1,77 @@
+{
+ "name": "Usable cargo capacity forecast",
+ "dataSource": "Synthetic history generated from documented assumptions",
+ "trainingRows": 4000,
+ "heldOutRows": 1000,
+ "features": [
+  "isPax",
+  "paxLoadFactor",
+  "payloadRestriction",
+  "extraFuel",
+  "hoursSinceReopen",
+  "timeOfDay"
+ ],
+ "method": "Gradient boosted quantile regression (scikit learn), with linear quantile regression as reference",
+ "metrics": {
+  "pinball_P10_gbm": 0.00743,
+  "pinball_P10_linear": 0.00804,
+  "pinball_P50_gbm": 0.01631,
+  "pinball_P50_linear": 0.01762,
+  "pinball_P90_gbm": 0.00747,
+  "pinball_P90_linear": 0.0077,
+  "coverage_P10_P90": 0.78
+ },
+ "limits": "Trained on simulated data. It shows the method. Real accuracy needs the airline's own flight history.",
+ "explanation": {
+  "forecast": "SHAP TreeExplainer (interventional). Each driver is its contribution to the median forecast, in kg.",
+  "decisions": "Regulatory screen per shipment and leg, underbooking and overbooking cost, critical ratio, learned time sensitivity risk, the rule that blocks each alternative, and counterfactual re solves."
+ },
+ "timeSensitivity": {
+  "name": "Shipment time sensitivity",
+  "dataSource": "Synthetic histories and outcomes",
+  "architecture": "Two discrete-time neural hazard models, each with 48, 24 and 12 ReLU units",
+  "trainingHistoriesPerOutcome": 2200,
+  "heldOutHistoriesPerOutcome": 900,
+  "intervalHours": 3,
+  "horizonHours": 72,
+  "features": [
+   "perishable",
+   "liveAnimal",
+   "pharma",
+   "temperatureControlled",
+   "hoursInHandling",
+   "temperatureExcursionHours",
+   "hoursToKnownLimit",
+   "hoursFromDecision",
+   "hoursFromKnownLimit"
+  ],
+  "outcomes": {
+   "qualityLoss": {
+    "neuralBrier12h": 0.0586,
+    "neuralBrier24h": 0.1069,
+    "neuralBrier48h": 0.1399,
+    "logisticBrier12h": 0.0636,
+    "logisticBrier24h": 0.1234,
+    "logisticBrier48h": 0.1393
+   },
+   "downstreamDisruption": {
+    "neuralBrier12h": 0.0254,
+    "neuralBrier24h": 0.0667,
+    "neuralBrier48h": 0.0634,
+    "logisticBrier12h": 0.0243,
+    "logisticBrier24h": 0.0628,
+    "logisticBrier48h": 0.0628
+   }
+  },
+  "impactPoints": {
+   "qualityLoss": 450,
+   "downstreamDisruption": 320
+  },
+  "limits": "Held-out Brier scores use complete simulator outcomes. Training uses censored histories. Hold out real disruptions for calibration."
+ },
+ "regulatoryEligibility": {
+  "policyVersion": "ONCALL36-DEMO-CX-2026-11",
+  "approvalScope": "Simulated recovery legs",
+  "inputs": "Verified declaration attributes and simulated per-package leg acceptance"
+ }
+}

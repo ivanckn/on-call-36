@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "on-call-36", "runtimeExecutable": "npm", "runtimeArgs": ["run", "dev"], "port": 5173 },
+    { "name": "model-service", "runtimeExecutable": "model/.venv/bin/python", "runtimeArgs": ["model/server.py"], "port": 8036 }
+  ]
+}

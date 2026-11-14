@@ -1,0 +1,1128 @@
+{
+ "now": 72.0,
+ "closure": [
+  36,
+  72
+ ],
+ "minTransferHours": 3.0,
+ "flights": [
+  {
+   "id": "CX360",
+   "role": "CX9101",
+   "origin": "HKG",
+   "dest": "PVG",
+   "schedDep": 79.58,
+   "dep": 88.58,
+   "arr": 91.25,
+   "kind": "PAX",
+   "operator": "CX",
+   "aircraftType": "333",
+   "oagCargoTonnes": 11.7,
+   "nominalKg": 10530,
+   "coolPositions": 2,
+   "dryIceCapacityKg": 15,
+   "status": "Delayed 9h",
+   "cause": "Runway slots re sequenced after reopening",
+   "source": "OAG schedule",
+   "localDep": "2026-11-17T13:35",
+   "features": {
+    "isPax": 1,
+    "paxLoadFactor": 0.95,
+    "payloadRestriction": 0,
+    "extraFuel": 0,
+    "hoursSinceReopen": 16.58,
+    "timeOfDay": 22
+   },
+   "forecast": {
+    "p10": 0.707,
+    "p50": 0.768,
+    "p90": 0.823,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.95,
+      "effect": -0.0968,
+      "effectKg": -1019
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.018,
+      "effectKg": 190
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 0,
+      "effect": 0.0122,
+      "effectKg": 128
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 16.58,
+      "effect": -0.0081,
+      "effectKg": -85
+     },
+     {
+      "feature": "timeOfDay",
+      "label": "time of day",
+      "value": 22,
+      "effect": -0.0031,
+      "effectKg": -33
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 1,
+      "effect": -0.0027,
+      "effectKg": -28
+     }
+    ],
+    "shapBaseKg": 8932
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 7445,
+    "p50": 8087,
+    "p90": 8666
+   },
+   "plannedKg": 7400,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.915,
+   "bumpOrder": [
+    "160-77218680",
+    "160-77220054",
+    "160-77221421",
+    "160-77224162",
+    "160-77225536",
+    "160-77229644",
+    "160-77222795",
+    "160-77231011",
+    "160-77226903",
+    "160-77228270",
+    "160-77248824"
+   ],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 0,
+    "PR2": 2300,
+    "PR3": 1500,
+    "GEN": 3600
+   },
+   "reason": "Planned to 92% of the median forecast. Forecast is lowered most by passenger load (bags in the belly) (-1,019 kg) and hours since the airport reopened (-85 kg). First to come off if space is short: Books, Toys."
+  },
+  {
+   "id": "CX380",
+   "role": "CX9102",
+   "origin": "HKG",
+   "dest": "PVG",
+   "schedDep": 81.08,
+   "dep": 81.08,
+   "arr": 83.75,
+   "kind": "PAX",
+   "operator": "CX",
+   "aircraftType": "333",
+   "oagCargoTonnes": 11.7,
+   "nominalKg": 10530,
+   "coolPositions": 2,
+   "dryIceCapacityKg": 15,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-17T15:05",
+   "features": {
+    "isPax": 1,
+    "paxLoadFactor": 0.97,
+    "payloadRestriction": 0,
+    "extraFuel": 0,
+    "hoursSinceReopen": 9.079999999999998,
+    "timeOfDay": 15
+   },
+   "forecast": {
+    "p10": 0.677,
+    "p50": 0.748,
+    "p90": 0.811,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.97,
+      "effect": -0.1001,
+      "effectKg": -1054
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 9.079999999999998,
+      "effect": -0.0273,
+      "effectKg": -287
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.018,
+      "effectKg": 190
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 0,
+      "effect": 0.0124,
+      "effectKg": 131
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 1,
+      "effect": -0.0027,
+      "effectKg": -28
+     }
+    ],
+    "shapBaseKg": 8932
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 7129,
+    "p50": 7876,
+    "p90": 8540
+   },
+   "plannedKg": 6800,
+   "plannedDryIceKg": 10.0,
+   "plannedVsMedian": 0.863,
+   "bumpOrder": [
+    "160-77233752",
+    "160-77215946",
+    "160-77251565",
+    "160-77232385",
+    "160-77203615",
+    "160-77206356",
+    "160-77207723"
+   ],
+   "mixKgByTier": {
+    "PRS": 1800,
+    "PR1": 5000,
+    "PR2": 0,
+    "PR3": 0,
+    "GEN": 0
+   },
+   "reason": "Planned to 86% of the median forecast. Forecast is lowered most by passenger load (bags in the belly) (-1,054 kg) and hours since the airport reopened (-287 kg). First to come off if space is short: Semiconductors, Fashion samples."
+  },
+  {
+   "id": "CX362",
+   "role": "CX9106",
+   "origin": "HKG",
+   "dest": "PVG",
+   "schedDep": 85.33,
+   "dep": 85.33,
+   "arr": 88.0,
+   "kind": "PAX",
+   "operator": "CX",
+   "aircraftType": "773",
+   "oagCargoTonnes": 18.4,
+   "nominalKg": 16560,
+   "coolPositions": 2,
+   "dryIceCapacityKg": 15,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-17T19:20",
+   "features": {
+    "isPax": 1,
+    "paxLoadFactor": 0.88,
+    "payloadRestriction": 0,
+    "extraFuel": 0,
+    "hoursSinceReopen": 13.329999999999998,
+    "timeOfDay": 19
+   },
+   "forecast": {
+    "p10": 0.725,
+    "p50": 0.8,
+    "p90": 0.858,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.88,
+      "effect": -0.0607,
+      "effectKg": -1005
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.02,
+      "effectKg": 331
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 13.329999999999998,
+      "effect": -0.012,
+      "effectKg": -198
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 0,
+      "effect": 0.0114,
+      "effectKg": 189
+     },
+     {
+      "feature": "timeOfDay",
+      "label": "time of day",
+      "value": 19,
+      "effect": -0.0043,
+      "effectKg": -71
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 1,
+      "effect": -0.0026,
+      "effectKg": -43
+     }
+    ],
+    "shapBaseKg": 14046
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 12006,
+    "p50": 13248,
+    "p90": 14208
+   },
+   "plannedKg": 11750,
+   "plannedDryIceKg": 10.0,
+   "plannedVsMedian": 0.887,
+   "bumpOrder": [
+    "160-77237860",
+    "160-77239234",
+    "160-77252932",
+    "160-77254306",
+    "160-77236493",
+    "160-77255673",
+    "160-77281702",
+    "160-77250191",
+    "160-77235126",
+    "160-77247450",
+    "160-77217313"
+   ],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 1300,
+    "PR2": 2100,
+    "PR3": 2800,
+    "GEN": 5550
+   },
+   "reason": "Planned to 89% of the median forecast. Forecast is lowered most by passenger load (bags in the belly) (-1,005 kg) and hours since the airport reopened (-198 kg). First to come off if space is short: Accessories, Catalogues."
+  },
+  {
+   "id": "CX2058",
+   "role": "CX9104",
+   "origin": "HKG",
+   "dest": "PVG",
+   "schedDep": 88.17,
+   "dep": 88.17,
+   "arr": 93.25,
+   "kind": "FRT",
+   "operator": "CX",
+   "aircraftType": "74N",
+   "oagCargoTonnes": 137.75,
+   "nominalKg": 27550,
+   "coolPositions": 3,
+   "dryIceCapacityKg": 35,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-17T22:10",
+   "features": {
+    "isPax": 0,
+    "paxLoadFactor": 0.0,
+    "payloadRestriction": 0,
+    "extraFuel": 1,
+    "hoursSinceReopen": 16.17,
+    "timeOfDay": 22
+   },
+   "forecast": {
+    "p10": 0.803,
+    "p50": 0.86,
+    "p90": 0.914,
+    "drivers": [
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 1,
+      "effect": -0.0337,
+      "effectKg": -929
+     },
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.0,
+      "effect": 0.0334,
+      "effectKg": 921
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.0204,
+      "effectKg": 563
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 16.17,
+      "effect": -0.009,
+      "effectKg": -249
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 0,
+      "effect": 0.0023,
+      "effectKg": 63
+     }
+    ],
+    "shapBaseKg": 23368
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 22123,
+    "p50": 23693,
+    "p90": 25181
+   },
+   "plannedKg": 21900,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.924,
+   "bumpOrder": [
+    "160-77204982",
+    "160-77244716",
+    "160-77246083",
+    "160-77241975",
+    "160-77243342",
+    "160-77240601",
+    "160-77210464",
+    "160-77209090"
+   ],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 0,
+    "PR2": 7500,
+    "PR3": 6000,
+    "GEN": 8400
+   },
+   "reason": "Planned to 92% of the median forecast. Forecast is lowered most by extra fuel carried (-929 kg) and hours since the airport reopened (-249 kg). First to come off if space is short: Garments, Machine parts."
+  },
+  {
+   "id": "CX50",
+   "role": "CX9108",
+   "origin": "HKG",
+   "dest": "PVG",
+   "schedDep": 113.5,
+   "dep": 113.5,
+   "arr": 116.0,
+   "kind": "FRT",
+   "operator": "CX",
+   "aircraftType": "74N",
+   "oagCargoTonnes": 137.75,
+   "nominalKg": 27550,
+   "coolPositions": 3,
+   "dryIceCapacityKg": 35,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-18T23:30",
+   "features": {
+    "isPax": 0,
+    "paxLoadFactor": 0.0,
+    "payloadRestriction": 0,
+    "extraFuel": 0,
+    "hoursSinceReopen": 41.5,
+    "timeOfDay": 23
+   },
+   "forecast": {
+    "p10": 0.875,
+    "p50": 0.916,
+    "p90": 0.967,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.0,
+      "effect": 0.0348,
+      "effectKg": 959
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.0189,
+      "effectKg": 521
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 0,
+      "effect": 0.0119,
+      "effectKg": 329
+     },
+     {
+      "feature": "timeOfDay",
+      "label": "time of day",
+      "value": 23,
+      "effect": -0.0073,
+      "effectKg": -202
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 41.5,
+      "effect": 0.0072,
+      "effectKg": 199
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 0,
+      "effect": 0.0023,
+      "effectKg": 65
+     }
+    ],
+    "shapBaseKg": 23368
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 24106,
+    "p50": 25236,
+    "p90": 26641
+   },
+   "plannedKg": 0,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.0,
+   "bumpOrder": [],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 0,
+    "PR2": 0,
+    "PR3": 0,
+    "GEN": 0
+   },
+   "reason": "Planned to 0% of the median forecast. Forecast is lowered most by time of day (-202 kg). "
+  },
+  {
+   "id": "CX450",
+   "role": "CX9201",
+   "origin": "HKG",
+   "dest": "NRT",
+   "schedDep": 76.0,
+   "dep": 76.0,
+   "arr": 81.83,
+   "kind": "PAX",
+   "operator": "CX",
+   "aircraftType": "773",
+   "oagCargoTonnes": 18.4,
+   "nominalKg": 16560,
+   "coolPositions": 2,
+   "dryIceCapacityKg": 15,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-17T10:00",
+   "features": {
+    "isPax": 1,
+    "paxLoadFactor": 0.98,
+    "payloadRestriction": 1,
+    "extraFuel": 0,
+    "hoursSinceReopen": 4.0,
+    "timeOfDay": 10
+   },
+   "forecast": {
+    "p10": 0.593,
+    "p50": 0.652,
+    "p90": 0.725,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.98,
+      "effect": -0.097,
+      "effectKg": -1606
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 1,
+      "effect": -0.0766,
+      "effectKg": -1268
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 4.0,
+      "effect": -0.0304,
+      "effectKg": -503
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 0,
+      "effect": 0.0114,
+      "effectKg": 188
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 1,
+      "effect": -0.0029,
+      "effectKg": -48
+     }
+    ],
+    "shapBaseKg": 14046
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 9820,
+    "p50": 10797,
+    "p90": 12006
+   },
+   "plannedKg": 9100,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.843,
+   "bumpOrder": [
+    "160-77262522",
+    "160-77265263",
+    "160-77263896",
+    "160-77261155",
+    "160-77259781",
+    "160-77258414",
+    "160-77257040"
+   ],
+   "mixKgByTier": {
+    "PRS": 700,
+    "PR1": 1300,
+    "PR2": 2200,
+    "PR3": 1800,
+    "GEN": 3100
+   },
+   "reason": "Planned to 84% of the median forecast. Forecast is lowered most by passenger load (bags in the belly) (-1,606 kg) and weather payload restriction (-1,268 kg). First to come off if space is short: Magazines, Ceramics."
+  },
+  {
+   "id": "CX500",
+   "role": "CX9203",
+   "origin": "HKG",
+   "dest": "NRT",
+   "schedDep": 81.42,
+   "dep": 81.42,
+   "arr": 85.33,
+   "kind": "PAX",
+   "operator": "CX",
+   "aircraftType": "333",
+   "oagCargoTonnes": 11.7,
+   "nominalKg": 10530,
+   "coolPositions": 2,
+   "dryIceCapacityKg": 15,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-17T15:25",
+   "features": {
+    "isPax": 1,
+    "paxLoadFactor": 0.9,
+    "payloadRestriction": 0,
+    "extraFuel": 0,
+    "hoursSinceReopen": 9.420000000000002,
+    "timeOfDay": 15
+   },
+   "forecast": {
+    "p10": 0.714,
+    "p50": 0.788,
+    "p90": 0.84,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.9,
+      "effect": -0.0719,
+      "effectKg": -757
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.0195,
+      "effectKg": 205
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 9.420000000000002,
+      "effect": -0.0171,
+      "effectKg": -180
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 0,
+      "effect": 0.0115,
+      "effectKg": 122
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 1,
+      "effect": -0.0027,
+      "effectKg": -28
+     }
+    ],
+    "shapBaseKg": 8932
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 7518,
+    "p50": 8298,
+    "p90": 8845
+   },
+   "plannedKg": 7100,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.856,
+   "bumpOrder": [
+    "160-77269371",
+    "160-77272112",
+    "160-77266630",
+    "160-77270745"
+   ],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 0,
+    "PR2": 4000,
+    "PR3": 0,
+    "GEN": 3100
+   },
+   "reason": "Planned to 86% of the median forecast. Forecast is lowered most by passenger load (bags in the belly) (-757 kg) and hours since the airport reopened (-180 kg). First to come off if space is short: Uniforms, Tea."
+  },
+  {
+   "id": "CX6",
+   "role": "CX9205",
+   "origin": "HKG",
+   "dest": "NRT",
+   "schedDep": 91.5,
+   "dep": 91.5,
+   "arr": 95.33,
+   "kind": "FRT",
+   "operator": "CX",
+   "aircraftType": "74Y",
+   "oagCargoTonnes": 110.0,
+   "nominalKg": 22000,
+   "coolPositions": 3,
+   "dryIceCapacityKg": 35,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-18T01:30",
+   "features": {
+    "isPax": 0,
+    "paxLoadFactor": 0.0,
+    "payloadRestriction": 1,
+    "extraFuel": 1,
+    "hoursSinceReopen": 19.5,
+    "timeOfDay": 1
+   },
+   "forecast": {
+    "p10": 0.723,
+    "p50": 0.764,
+    "p90": 0.823,
+    "drivers": [
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 1,
+      "effect": -0.0807,
+      "effectKg": -1775
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 1,
+      "effect": -0.0358,
+      "effectKg": -788
+     },
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.0,
+      "effect": 0.0312,
+      "effectKg": 686
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 0,
+      "effect": 0.004,
+      "effectKg": 88
+     }
+    ],
+    "shapBaseKg": 18661
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 15906,
+    "p50": 16808,
+    "p90": 18106
+   },
+   "plannedKg": 3000,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.178,
+   "bumpOrder": [
+    "160-77268004"
+   ],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 0,
+    "PR2": 0,
+    "PR3": 3000,
+    "GEN": 0
+   },
+   "reason": "Planned to 18% of the median forecast. Forecast is lowered most by weather payload restriction (-1,775 kg) and extra fuel carried (-788 kg). First to come off if space is short: Car batteries."
+  },
+  {
+   "id": "CX2090",
+   "role": "CX9301",
+   "origin": "HKG",
+   "dest": "LAX",
+   "schedDep": 92.5,
+   "dep": 92.5,
+   "arr": 114.17,
+   "kind": "FRT",
+   "operator": "CX",
+   "aircraftType": "74N",
+   "oagCargoTonnes": 137.75,
+   "nominalKg": 27550,
+   "coolPositions": 3,
+   "dryIceCapacityKg": 35,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-18T02:30",
+   "features": {
+    "isPax": 0,
+    "paxLoadFactor": 0.0,
+    "payloadRestriction": 0,
+    "extraFuel": 1,
+    "hoursSinceReopen": 20.5,
+    "timeOfDay": 2
+   },
+   "forecast": {
+    "p10": 0.817,
+    "p50": 0.866,
+    "p90": 0.922,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.0,
+      "effect": 0.0335,
+      "effectKg": 923
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 1,
+      "effect": -0.0334,
+      "effectKg": -919
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.019,
+      "effectKg": 522
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 20.5,
+      "effect": -0.0035,
+      "effectKg": -97
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 0,
+      "effect": 0.0021,
+      "effectKg": 57
+     }
+    ],
+    "shapBaseKg": 23368
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 22508,
+    "p50": 23858,
+    "p90": 25401
+   },
+   "plannedKg": 11800,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.495,
+   "bumpOrder": [
+    "160-77277594",
+    "160-77278961",
+    "160-77276220",
+    "160-77274853",
+    "160-77273486"
+   ],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 2400,
+    "PR2": 1800,
+    "PR3": 2600,
+    "GEN": 5000
+   },
+   "reason": "Planned to 50% of the median forecast. Forecast is lowered most by extra fuel carried (-919 kg) and hours since the airport reopened (-97 kg). First to come off if space is short: Board games, Kitchen appliances."
+  },
+  {
+   "id": "CX884",
+   "role": "CX9303",
+   "origin": "HKG",
+   "dest": "LAX",
+   "schedDep": 102.67,
+   "dep": 102.67,
+   "arr": 115.33,
+   "kind": "PAX",
+   "operator": "CX",
+   "aircraftType": "77W",
+   "oagCargoTonnes": 20.7,
+   "nominalKg": 18630,
+   "coolPositions": 2,
+   "dryIceCapacityKg": 15,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-18T12:40",
+   "features": {
+    "isPax": 1,
+    "paxLoadFactor": 0.93,
+    "payloadRestriction": 0,
+    "extraFuel": 1,
+    "hoursSinceReopen": 30.67,
+    "timeOfDay": 12
+   },
+   "forecast": {
+    "p10": 0.686,
+    "p50": 0.747,
+    "p90": 0.803,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.93,
+      "effect": -0.0861,
+      "effectKg": -1604
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 1,
+      "effect": -0.0363,
+      "effectKg": -675
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.0187,
+      "effectKg": 348
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 1,
+      "effect": -0.0033,
+      "effectKg": -61
+     },
+     {
+      "feature": "timeOfDay",
+      "label": "time of day",
+      "value": 12,
+      "effect": 0.0027,
+      "effectKg": 50
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 30.67,
+      "effect": 0.0026,
+      "effectKg": 48
+     }
+    ],
+    "shapBaseKg": 15802
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 12780,
+    "p50": 13917,
+    "p90": 14960
+   },
+   "plannedKg": 3450,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.248,
+   "bumpOrder": [
+    "160-77214572",
+    "160-77213205",
+    "160-77211831"
+   ],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 1400,
+    "PR2": 0,
+    "PR3": 1100,
+    "GEN": 950
+   },
+   "reason": "Planned to 25% of the median forecast. Forecast is lowered most by passenger load (bags in the belly) (-1,604 kg) and extra fuel carried (-675 kg). First to come off if space is short: Footwear, Auto parts."
+  },
+  {
+   "id": "CX882",
+   "role": "CX9305",
+   "origin": "HKG",
+   "dest": "LAX",
+   "schedDep": 109.83,
+   "dep": 109.83,
+   "arr": 122.5,
+   "kind": "PAX",
+   "operator": "CX",
+   "aircraftType": "77W",
+   "oagCargoTonnes": 20.7,
+   "nominalKg": 18630,
+   "coolPositions": 2,
+   "dryIceCapacityKg": 15,
+   "status": "On time",
+   "cause": "",
+   "source": "OAG schedule",
+   "localDep": "2026-11-18T19:50",
+   "features": {
+    "isPax": 1,
+    "paxLoadFactor": 0.85,
+    "payloadRestriction": 0,
+    "extraFuel": 0,
+    "hoursSinceReopen": 37.83,
+    "timeOfDay": 19
+   },
+   "forecast": {
+    "p10": 0.794,
+    "p50": 0.837,
+    "p90": 0.909,
+    "drivers": [
+     {
+      "feature": "paxLoadFactor",
+      "label": "passenger load (bags in the belly)",
+      "value": 0.85,
+      "effect": -0.0394,
+      "effectKg": -735
+     },
+     {
+      "feature": "payloadRestriction",
+      "label": "weather payload restriction",
+      "value": 0,
+      "effect": 0.0178,
+      "effectKg": 332
+     },
+     {
+      "feature": "extraFuel",
+      "label": "extra fuel carried",
+      "value": 0,
+      "effect": 0.0122,
+      "effectKg": 227
+     },
+     {
+      "feature": "hoursSinceReopen",
+      "label": "hours since the airport reopened",
+      "value": 37.83,
+      "effect": 0.0054,
+      "effectKg": 101
+     },
+     {
+      "feature": "timeOfDay",
+      "label": "time of day",
+      "value": 19,
+      "effect": -0.0044,
+      "effectKg": -82
+     },
+     {
+      "feature": "isPax",
+      "label": "aircraft kind",
+      "value": 1,
+      "effect": -0.0029,
+      "effectKg": -54
+     }
+    ],
+    "shapBaseKg": 15802
+   },
+   "capacityScale": 1.0,
+   "forecastKg": {
+    "p10": 14792,
+    "p50": 15593,
+    "p90": 16935
+   },
+   "plannedKg": 0,
+   "plannedDryIceKg": 0,
+   "plannedVsMedian": 0.0,
+   "bumpOrder": [],
+   "mixKgByTier": {
+    "PRS": 0,
+    "PR1": 0,
+    "PR2": 0,
+    "PR3": 0,
+    "GEN": 0
+   },
+   "reason": "Planned to 0% of the median forecast. Forecast is lowered most by passenger load (bags in the belly) (-735 kg) and time of day (-82 kg). "
+  }
+ ],
+ "returnFlight": {
+  "id": "CX381",
+  "origin": "PVG",
+  "dest": "HKG",
+  "schedDep": 85.08,
+  "dep": 93.75,
+  "arr": 96.75,
+  "schedArr": 88.08,
+  "status": "Delayed 9h",
+  "cause": "Late inbound aircraft from CX360",
+  "source": "OAG schedule"
+ },
+ "ripple": {
+  "trigger": {
+   "flight": "CX360",
+   "status": "Delayed 9h",
+   "cause": "Runway slots re sequenced after reopening"
+  },
+  "delayedFlights": [
+   "CX360"
+  ],
+  "chain": [
+   {
+    "label": "On the delayed flight to Shanghai",
+    "flight": "CX360",
+    "shipments": 13,
+    "needReplan": 3
+   },
+   {
+    "label": "Out of Shanghai on the same aircraft",
+    "flight": "CX381",
+    "status": "Delayed 9h",
+    "cause": "Late inbound aircraft from CX360",
+    "shipments": 14,
+    "needReplan": 3
+   },
+   {
+    "label": "Onward connections in Hong Kong that break",
+    "flight": "CX2090",
+    "shipments": 3,
+    "needReplan": 3
+   }
+  ]
+ },
+ "simulated": true
+}

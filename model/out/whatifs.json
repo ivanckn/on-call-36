@@ -1,0 +1,219 @@
+[
+ {
+  "label": "Capacity on CX380 comes in 20% lower",
+  "inputs": {
+   "cap_scale": {
+    "CX380": 0.8
+   }
+  },
+  "solver": {
+   "method": "Two stage stochastic mixed integer program (HiGHS via SciPy), solved per lane",
+   "lanes": 3,
+   "scenarios": 40,
+   "binaryVariables": 9121,
+   "continuousVariables": 0,
+   "constraints": 9362,
+   "solveSeconds": 5.61,
+   "optimalityGap": 0.0025818716988059956
+  },
+  "changed": [
+   {
+    "awb": "160-77204982",
+    "commodity": "Garments",
+    "tier": "GEN",
+    "was": "CX2058",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Moved from CX380 to CX362 to make room for cargo that is costlier to delay. Still arrives 22h inside its promise. 98% chance it fits. It is low cost to bump and to delay, so it carries the risk if capacity comes in short."
+   },
+   {
+    "awb": "160-77233752",
+    "commodity": "Semiconductors",
+    "tier": "PR1",
+    "was": "CX380",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Moved from CX380 to CX362 to make room for cargo that is costlier to delay. Still arrives 6h inside its promise."
+   },
+   {
+    "awb": "160-77239234",
+    "commodity": "Catalogues",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX2058",
+    "statusNow": "Placed automatically",
+    "reason": "Moved from CX380 to CX2058 to make room for cargo that is costlier to delay. Still arrives 18.8h inside its promise. 92% chance it fits. It is low cost to bump and to delay, so it carries the risk if capacity comes in short."
+   },
+   {
+    "awb": "160-77248824",
+    "commodity": "E commerce parcels",
+    "tier": "PR2",
+    "was": "CX360",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX362, arrives 4h inside its promise."
+   },
+   {
+    "awb": "160-77252932",
+    "commodity": "Garment trims",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX360",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX360, arrives 26.8h inside its promise."
+   },
+   {
+    "awb": "160-77254306",
+    "commodity": "Toys (backlog)",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX2058",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX2058, arrives 26.8h inside its promise. 98% chance it fits. It is low cost to bump and to delay, so it carries the risk if capacity comes in short."
+   }
+  ],
+  "costIndexChange": 111,
+  "promisesKeptChange": -0.2,
+  "perishableChange": 0.0,
+  "downstreamMissesChange": 0.96
+ },
+ {
+  "label": "CX2058 freighter is delayed 6 more hours",
+  "inputs": {
+   "delays": {
+    "CX360": 9,
+    "CX2058": 6
+   }
+  },
+  "solver": {
+   "method": "Two stage stochastic mixed integer program (HiGHS via SciPy), solved per lane",
+   "lanes": 3,
+   "scenarios": 40,
+   "binaryVariables": 9121,
+   "continuousVariables": 0,
+   "constraints": 9362,
+   "solveSeconds": 5.95,
+   "optimalityGap": 0.0005980301559494138
+  },
+  "changed": [
+   {
+    "awb": "160-77237860",
+    "commodity": "Accessories",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX360",
+    "statusNow": "Placed automatically",
+    "reason": "Moved from CX380 to CX360 to make room for cargo that is costlier to delay. Still arrives 20.8h inside its promise."
+   },
+   {
+    "awb": "160-77239234",
+    "commodity": "Catalogues",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX380",
+    "statusNow": "No action needed",
+    "reason": "Stays on CX380 as booked, arrives 28.2h inside its promise."
+   },
+   {
+    "awb": "160-77248824",
+    "commodity": "E commerce parcels",
+    "tier": "PR2",
+    "was": "CX360",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX362, arrives 4h inside its promise."
+   }
+  ],
+  "costIndexChange": 177,
+  "promisesKeptChange": -0.9,
+  "perishableChange": 0.0,
+  "downstreamMissesChange": 0.0
+ },
+ {
+  "label": "CX360 delay grows from 9h to 14h",
+  "inputs": {
+   "delays": {
+    "CX360": 14
+   }
+  },
+  "solver": {
+   "method": "Two stage stochastic mixed integer program (HiGHS via SciPy), solved per lane",
+   "lanes": 3,
+   "scenarios": 40,
+   "binaryVariables": 8998,
+   "continuousVariables": 0,
+   "constraints": 9242,
+   "solveSeconds": 5.48,
+   "optimalityGap": 0.007942124593733262
+  },
+  "changed": [
+   {
+    "awb": "160-77204982",
+    "commodity": "Garments",
+    "tier": "GEN",
+    "was": "CX2058",
+    "now": "CX360",
+    "statusNow": "Placed automatically",
+    "reason": "Moved from CX380 to CX360 to make room for cargo that is costlier to delay. Still arrives 13.8h inside its promise."
+   },
+   {
+    "awb": "160-77211831",
+    "commodity": "Consumer electronics",
+    "tier": "PR1",
+    "was": "CX884",
+    "now": "CX882",
+    "statusNow": "Placed, promise missed",
+    "reason": "Missed CX2090 because the inbound flight is late. Placed on CX882, arrives 8h after its promise. This is the earliest flight that passes every check. The forwarder is told now, with the new arrival time."
+   },
+   {
+    "awb": "160-77213205",
+    "commodity": "Auto parts",
+    "tier": "PR3",
+    "was": "CX884",
+    "now": "CX882",
+    "statusNow": "Placed automatically",
+    "reason": "Missed CX2090 because the inbound flight is late. Placed on CX882, arrives 1.5h inside its promise."
+   },
+   {
+    "awb": "160-77214572",
+    "commodity": "Footwear",
+    "tier": "GEN",
+    "was": "CX884",
+    "now": "CX882",
+    "statusNow": "Placed automatically",
+    "reason": "Missed CX2090 because the inbound flight is late. Placed on CX882, arrives 17.5h inside its promise."
+   },
+   {
+    "awb": "160-77239234",
+    "commodity": "Catalogues",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX380",
+    "statusNow": "No action needed",
+    "reason": "Stays on CX380 as booked, arrives 28.2h inside its promise."
+   },
+   {
+    "awb": "160-77248824",
+    "commodity": "E commerce parcels",
+    "tier": "PR2",
+    "was": "CX360",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX362, arrives 4h inside its promise."
+   },
+   {
+    "awb": "160-77254306",
+    "commodity": "Toys (backlog)",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX2058",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX2058, arrives 26.8h inside its promise."
+   }
+  ],
+  "costIndexChange": 390,
+  "promisesKeptChange": 0.1,
+  "perishableChange": 0.0,
+  "downstreamMissesChange": 1.0
+ }
+]

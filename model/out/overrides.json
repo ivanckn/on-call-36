@@ -1,0 +1,205 @@
+[
+ {
+  "label": "Keep the garments on the first flight",
+  "awb": "160-77204982",
+  "flight": "CX380",
+  "feasible": true,
+  "changed": [
+   {
+    "awb": "160-77204982",
+    "commodity": "Garments",
+    "tier": "GEN",
+    "was": "CX2058",
+    "now": "CX380",
+    "statusNow": "No action needed",
+    "reason": "Stays on CX380 as booked, arrives 26.2h inside its promise."
+   },
+   {
+    "awb": "160-77239234",
+    "commodity": "Catalogues",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX380",
+    "statusNow": "No action needed",
+    "reason": "Stays on CX380 as booked, arrives 28.2h inside its promise."
+   },
+   {
+    "awb": "160-77248824",
+    "commodity": "E commerce parcels",
+    "tier": "PR2",
+    "was": "CX360",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX362, arrives 4h inside its promise."
+   },
+   {
+    "awb": "160-77254306",
+    "commodity": "Toys (backlog)",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX2058",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX2058, arrives 26.8h inside its promise."
+   }
+  ],
+  "costIndexChange": 22,
+  "promisesKeptChange": 0.1,
+  "perishableChange": 0.0,
+  "downstreamMissesChange": 0.0
+ },
+ {
+  "label": "Leave the cherries on the delayed flight",
+  "awb": "160-77203615",
+  "flight": "CX360",
+  "feasible": true,
+  "changed": [
+   {
+    "awb": "160-77203615",
+    "commodity": "Cherries",
+    "tier": "PRS",
+    "was": "CX380",
+    "now": "CX360",
+    "statusNow": "Placed, promise missed",
+    "reason": "Placed on CX360, arrives 5.2h after its promise. Perishable: -1.2h of shelf life left on arrival. This is the earliest flight that passes every check. The forwarder is told now, with the new arrival time."
+   },
+   {
+    "awb": "160-77235126",
+    "commodity": "Eyewear",
+    "tier": "PR2",
+    "was": "CX362",
+    "now": "CX380",
+    "statusNow": "No action needed",
+    "reason": "Stays on CX380 as booked, arrives 8.2h inside its promise."
+   },
+   {
+    "awb": "160-77237860",
+    "commodity": "Accessories",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX380",
+    "statusNow": "No action needed",
+    "reason": "Stays on CX380 as booked, arrives 28.2h inside its promise."
+   },
+   {
+    "awb": "160-77248824",
+    "commodity": "E commerce parcels",
+    "tier": "PR2",
+    "was": "CX360",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX362, arrives 4h inside its promise."
+   }
+  ],
+  "costIndexChange": 3577,
+  "promisesKeptChange": -1.0,
+  "perishableChange": -1.0,
+  "downstreamMissesChange": -0.04
+ },
+ {
+  "label": "Put the lithium batteries on the first flight",
+  "awb": "160-77209090",
+  "flight": "CX380",
+  "feasible": false,
+  "reason": "Not allowed: UN3480 is cargo-aircraft-only in this assessment.",
+  "regulatory": {
+   "status": "BLOCKED",
+   "policyVersion": "ONCALL36-DEMO-CX-2026-11",
+   "findings": [
+    {
+     "status": "BLOCKED",
+     "code": "CARGO_AIRCRAFT_ONLY",
+     "message": "UN3480 is cargo-aircraft-only in this assessment.",
+     "source": "IATA Lithium and Sodium Ion Battery Guidance, 2026"
+    },
+    {
+     "status": "ELIGIBLE_FOR_PLANNING",
+     "code": "LEG_ACCEPTANCE_VERIFIED",
+     "message": "Package record SIM-160-77209090-CX380 matches this leg and quantity.",
+     "source": "Simulated AWB/leg acceptance record"
+    }
+   ],
+   "declaredUNs": [
+    "UN3480"
+   ]
+  }
+ },
+ {
+  "label": "Send the vaccines on the later passenger flight",
+  "awb": "160-77207723",
+  "flight": "CX362",
+  "feasible": false,
+  "reason": "Not allowed: would exceed the allowed time in the cool room.",
+  "regulatory": {
+   "status": "ELIGIBLE_FOR_PLANNING",
+   "policyVersion": "ONCALL36-DEMO-CX-2026-11",
+   "findings": [],
+   "declaredUNs": []
+  }
+ },
+ {
+  "label": "Hold the lobster for the freighter",
+  "awb": "160-77206356",
+  "flight": "CX2058",
+  "feasible": true,
+  "changed": [
+   {
+    "awb": "160-77204982",
+    "commodity": "Garments",
+    "tier": "GEN",
+    "was": "CX2058",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Moved from CX380 to CX362 to make room for cargo that is costlier to delay. Still arrives 22h inside its promise."
+   },
+   {
+    "awb": "160-77206356",
+    "commodity": "Live lobster",
+    "tier": "PRS",
+    "was": "CX380",
+    "now": "CX2058",
+    "statusNow": "Placed, promise missed",
+    "reason": "Placed on CX2058, arrives 8.2h after its promise. Perishable: -5.2h of shelf life left on arrival. This is the earliest flight that passes every check. The forwarder is told now, with the new arrival time."
+   },
+   {
+    "awb": "160-77235126",
+    "commodity": "Eyewear",
+    "tier": "PR2",
+    "was": "CX362",
+    "now": "CX380",
+    "statusNow": "No action needed",
+    "reason": "Stays on CX380 as booked, arrives 8.2h inside its promise."
+   },
+   {
+    "awb": "160-77237860",
+    "commodity": "Accessories",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX360",
+    "statusNow": "Placed automatically",
+    "reason": "Moved from CX380 to CX360 to make room for cargo that is costlier to delay. Still arrives 20.8h inside its promise."
+   },
+   {
+    "awb": "160-77248824",
+    "commodity": "E commerce parcels",
+    "tier": "PR2",
+    "was": "CX360",
+    "now": "CX362",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX362, arrives 4h inside its promise."
+   },
+   {
+    "awb": "160-77252932",
+    "commodity": "Garment trims",
+    "tier": "GEN",
+    "was": "CX362",
+    "now": "CX2058",
+    "statusNow": "Placed automatically",
+    "reason": "Placed on CX2058, arrives 24.8h inside its promise. 98% chance it fits. It is low cost to bump and to delay, so it carries the risk if capacity comes in short."
+   }
+  ],
+  "costIndexChange": 3625,
+  "promisesKeptChange": -0.9,
+  "perishableChange": -1.0,
+  "downstreamMissesChange": -0.04
+ }
+]
