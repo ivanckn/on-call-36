@@ -1,5 +1,4 @@
 // Back to normal: Monte Carlo forecast of the time to clear the backlog, over the real OAG schedule.
-import { useState } from 'react';
 import { backlog } from '../model/data';
 import { placeName } from '../model/text';
 import type { ClearSummary, Fan } from '../model/types';
@@ -13,11 +12,11 @@ const day = (h: number | null, locale: 'en' | 'zh') => {
   return locale === 'zh' ? `${d.getMonth() + 1}月${d.getDate()}日 ${fmtClock(h, locale).split(' ')[0]}` : `${fmtClock(h, locale).split(' ')[0]} ${d.getDate()} Nov`;
 };
 
-function FanChart({ fan, lever }: { fan: Fan; lever?: Fan }) {
+function FanChart({ fan }: { fan: Fan }) {
   const { t, locale } = useT();
   const W = 1400, H = 300, L = 56, B = 30, T = 24, Rp = 12;
   const tMin = fan.t[0], tMax = fan.t[fan.t.length - 1];
-  const yMax = Math.max(...fan.p90, ...(lever?.p90 ?? [])) * 1.05 || 1;
+  const yMax = Math.max(...fan.p90) * 1.05 || 1;
   const x = (v: number) => L + ((v - tMin) / (tMax - tMin)) * (W - L - Rp);
   const y = (v: number) => T + (1 - v / yMax) * (H - T - B);
   const band = (f: Fan) => `M${f.t.map((v, i) => `${x(v)},${y(f.p90[i])}`).join(' L')} L${[...f.t].reverse().map((v, i) => `${x(v)},${y(f.p10[f.t.length - 1 - i])}`).join(' L')} Z`;
@@ -31,7 +30,6 @@ function FanChart({ fan, lever }: { fan: Fan; lever?: Fan }) {
       {ticks.map((h) => <text key={h} x={x(h)} y={H - 8} textAnchor="middle" fontSize="13" fill="var(--text-3)">{day(h, locale)}</text>)}
       <path d={band(fan)} fill="var(--tint-2)" opacity="0.9" />
       <path d={line(fan)} fill="none" stroke="var(--green)" strokeWidth="2" />
-      {lever && <path d={line(lever)} fill="none" stroke="var(--caution)" strokeWidth="2" strokeDasharray="6 4" />}
       <text x={L} y={T - 8} fontSize="13" fill="var(--text-3)">{t('bk.tonnes')}</text>
     </svg>
   );
@@ -44,19 +42,14 @@ function Range({ c }: { c: ClearSummary }) {
 
 export function BacklogCard() {
   const { t, locale } = useT();
-  const [lever, setLever] = useState(false);
   const b = backlog;
-  const c = lever ? b.lever.overall : b.overall;
-  const lanes = b.lanes.map((l) => ({ ...l, clear: lever ? b.lever.lanes.find((x) => x.lane === l.lane)!.clearHours : l.clearHours }));
+  const c = b.overall;
+  const lanes = b.lanes.map((l) => ({ ...l, clear: l.clearHours }));
   const total = b.lanes.reduce((s, l) => s + l.initialBacklogTonnes.p50, 0);
   return (
     <section className="card" aria-label={t('bk.title')}>
       <div className="card-head">
         <div><h2>{t('bk.title')}</h2><p>{t('bk.intro', { n: b.assumptions.trials.toLocaleString('en-US'), flights: b.cancelled.length })}</p></div>
-        <div className="segmented" role="group" aria-label={t('bk.title')}>
-          <button aria-pressed={!lever} onClick={() => setLever(false)}>{t('bk.asScheduled')}</button>
-          <button aria-pressed={lever} onClick={() => setLever(true)}>{t('bk.withLever')}</button>
-        </div>
       </div>
       <div className="bk">
         <div className="bk-head">
@@ -70,25 +63,16 @@ export function BacklogCard() {
             <div className="kpi-value" style={{ fontSize: 30 }}>{Math.round(total).toLocaleString('en-US')} t</div>
             <div className="kpi-sub">{t('bk.backlogSub', { n: b.cancelled.length })}</div>
           </div>
-          {lever ? (
-            <div className="kpi kpi--violet" style={{ boxShadow: 'none' }}>
-              <span className="kpi-label">{t('bk.lever')}</span>
-              <div className="kpi-value" style={{ fontSize: 30 }}>{t('bk.earlier', { d: ((b.lever.p50HoursEarlier ?? 0) / 24).toFixed(1) })}</div>
-              <div className="kpi-sub">{t('bk.leverSub')}</div>
-            </div>
-          ) : (
-            <div className="kpi kpi--sky" style={{ boxShadow: 'none' }}>
-              <span className="kpi-label">{t('bk.bottleneck')}</span>
-              <div className="kpi-value" style={{ fontSize: 30 }}>{placeName(lanes.reduce((a, x) => ((x.clear.p50 ?? 1e9) > (a.clear.p50 ?? 0) ? x : a)).lane, locale)}</div>
-              <div className="kpi-sub">{t('bk.bottleneckSub')}</div>
-            </div>
-          )}
+          <div className="kpi kpi--sky" style={{ boxShadow: 'none' }}>
+            <span className="kpi-label">{t('bk.bottleneck')}</span>
+            <div className="kpi-value" style={{ fontSize: 30 }}>{placeName(lanes.reduce((a, x) => ((x.clear.p50 ?? 1e9) > (a.clear.p50 ?? 0) ? x : a)).lane, locale)}</div>
+            <div className="kpi-sub">{t('bk.bottleneckSub')}</div>
+          </div>
         </div>
-        <FanChart fan={b.fan} lever={lever ? b.lever.fan : undefined} />
+        <FanChart fan={b.fan} />
         <div className="band-legend" style={{ marginTop: 6 }}>
           <span><span className="swatch swatch--tint" />{t('bk.band')}</span>
           <span><span className="swatch" style={{ width: 18, height: 2, background: 'var(--green)' }} />{t('bk.median')}</span>
-          {lever && <span><span className="swatch" style={{ width: 18, height: 2, background: 'var(--caution)' }} />{t('bk.leverLine')}</span>}
         </div>
         <div className="table-wrap" style={{ marginTop: 14 }}>
           <table className="table table--compact">

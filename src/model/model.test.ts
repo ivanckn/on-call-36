@@ -196,13 +196,13 @@ describe('OAG backbone and back to normal forecast', () => {
     }
   });
 
-  it('forecasts the time back to normal with ordered percentiles and a lever that helps', () => {
+  it('forecasts the time back to normal with ordered percentiles', () => {
     const o = backlog.overall;
     expect(o.p10).not.toBeNull();
     expect(o.p10!).toBeLessThanOrEqual(o.p50!);
     expect(o.p50!).toBeLessThanOrEqual(o.p90!);
     expect(backlog.lanes.map((l) => l.lane)).toEqual(['PVG', 'NRT', 'LAX']);
-    expect(backlog.lever.p50HoursEarlier!).toBeGreaterThan(0);
+    expect('lever' in backlog).toBe(false);
     const probs = o.byMidnight.map((d) => d.probability);
     expect(probs).toEqual([...probs].sort((a, b) => a - b));
     for (let i = 0; i < backlog.fan.t.length; i++) expect(backlog.fan.p10[i]).toBeLessThanOrEqual(backlog.fan.p90[i]);

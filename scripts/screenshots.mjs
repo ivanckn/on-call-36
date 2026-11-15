@@ -64,10 +64,6 @@ const shot = (page, name, opts = {}) => { console.log('shot', name); return page
   await page.getByRole('button', { name: 'Simulated event' }).click();
   await page.getByRole('heading', { name: 'Back to normal' }).scrollIntoViewIfNeeded();
   await shot(page, '01c-back-to-normal');
-  await page.getByRole('button', { name: 'Add a freighter' }).click();
-  await page.waitForTimeout(200);
-  await shot(page, '01d-back-to-normal-lever');
-  await page.getByRole('button', { name: 'As scheduled' }).click();
   await shot(page, '01b-monitor-full', { fullPage: true });
   await page.goto(`${base}/recovery`); await settle(page);
   await shot(page, '02-recovery');

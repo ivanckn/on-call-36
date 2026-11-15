@@ -2,6 +2,8 @@
 import { Link } from 'react-router-dom';
 import { BacklogCard } from '../components/Backlog';
 import { SourcesCard } from '../components/Sources';
+import { AiExplain } from '../components/AiExplain';
+import { incidentFacts } from '../model/explainFacts';
 import { BarChart, Donut, TierBars } from '../components/Charts';
 import { IconArrow, IconBox, IconCherry, IconPlane, IconThermo, IconWarn, IconClock } from '../components/Icons';
 import { ModelStatusPill, Status, TierChip } from '../components/Status';
@@ -72,6 +74,8 @@ export function Monitor() {
           <div className="kpi-sub"><span className="kpi-chip">{t('monitor.placedOf', { placed, affected: affected.length })}</span></div>
         </div>
       </section>
+
+      <AiExplain kind="incident" facts={incidentFacts(plan)} title={t('ai.titleIncident')} />
 
       <section className="card" aria-label={t('ripple.title')}>
         <div className="card-head"><div><h2><span className="card-icon"><IconPlane /></span>{t('ripple.title')}</h2><p>{t('ripple.intro')}</p></div></div>

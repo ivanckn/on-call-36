@@ -1,0 +1,7 @@
+model/.venv
+model/oag_raw
+model/__pycache__
+node_modules
+dist
+docs
+.claude

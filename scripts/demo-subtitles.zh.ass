@@ -1,0 +1,33 @@
+[Script Info]
+ScriptType: v4.00+
+PlayResX: 1920
+PlayResY: 1080
+WrapStyle: 0
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,PingFang HK,46,&H00FFFFFF,&H00FFFFFF,&H64202020,&H64202020,1,0,0,0,100,100,0,0,3,14,0,2,80,80,46,1
+
+[Events]
+Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: 0,0:00:00.00,0:00:03.00,Default,,0,0,0,,這是我們的系統。
+Dialogue: 0,0:00:03.00,0:00:05.00,Default,,0,0,0,,一開啟就彈出警示：
+Dialogue: 0,0:00:05.00,0:00:08.00,Default,,0,0,0,,CX 360 延誤了 9 小時，
+Dialogue: 0,0:00:08.00,0:00:10.00,Default,,0,0,0,,30 票貨物受到影響。
+Dialogue: 0,0:00:10.00,0:00:13.00,Default,,0,0,0,,不單是這班航班，回程航班也延誤了，
+Dialogue: 0,0:00:13.00,0:00:16.00,Default,,0,0,0,,轉機的貨物也接駁不上。
+Dialogue: 0,0:00:16.00,0:00:21.00,Default,,0,0,0,,貨物只會安排上下一班可用航班，按照現有的班次，
+Dialogue: 0,0:00:21.00,0:00:24.00,Default,,0,0,0,,系統預測何時清理好積壓。
+Dialogue: 0,0:00:24.00,0:00:25.00,Default,,0,0,0,,進入復運頁面。
+Dialogue: 0,0:00:25.00,0:00:29.00,Default,,0,0,0,,30 票之中，26 票已經自動安排好，
+Dialogue: 0,0:00:29.00,0:00:31.00,Default,,0,0,0,,每一票都寫明原因，
+Dialogue: 0,0:00:31.00,0:00:33.00,Default,,0,0,0,,只有 3 票需要人手跟進。
+Dialogue: 0,0:00:33.00,0:00:37.00,Default,,0,0,0,,現在試試：如果這班航班突然再少兩成艙位，會怎樣？
+Dialogue: 0,0:00:37.00,0:00:39.00,Default,,0,0,0,,幾秒就計算好。
+Dialogue: 0,0:00:39.00,0:00:43.00,Default,,0,0,0,,哪幾票要調動、調到哪裡、為甚麼要調動，
+Dialogue: 0,0:00:43.00,0:00:45.00,Default,,0,0,0,,全部列出來。
+Dialogue: 0,0:00:45.00,0:00:47.00,Default,,0,0,0,,再試多一樣東西。
+Dialogue: 0,0:00:47.00,0:00:49.00,Default,,0,0,0,,我們強行把鋰電池放上客機，
+Dialogue: 0,0:00:49.00,0:00:51.00,Default,,0,0,0,,是不行的。
+Dialogue: 0,0:00:51.00,0:00:54.00,Default,,0,0,0,,系統馬上鎖定，還告訴你是哪條規則。
+Dialogue: 0,0:00:54.00,0:00:57.40,Default,,0,0,0,,安排不到的，就會交回同事處理。

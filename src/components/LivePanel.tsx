@@ -8,6 +8,8 @@ import { useDemo } from '../state/demo';
 import { ServiceBadge } from './Shell';
 import { Status, TierChip, toneOf } from './Status';
 import { Findings } from './Explain';
+import { AiExplain } from './AiExplain';
+import { changeFacts } from '../model/explainFacts';
 
 export function Deltas({ diff }: { diff: Pick<Diff, 'costIndexChange' | 'promisesKeptChange' | 'perishableChange'> }) {
   const { t } = useT();
@@ -73,6 +75,7 @@ export function LivePanel() {
             </ul>
           )}
           <SolverLine solver={state.plan.solver} seconds={state.seconds} />
+          <AiExplain inline kind="change" title={t('ai.titleChange')} facts={changeFacts(state.plan, state.diff, state.lastLabel, state.log[state.log.length - 1]?.text ?? null)} />
         </div>
       )}
 

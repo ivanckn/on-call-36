@@ -55,18 +55,11 @@ def beta(rng, mean, conc, n=None):
     return rng.beta(mean * conc, (1 - mean) * conc, n)
 
 
-def extra_sections(lane="LAX", days=4, tonnes=137.75, local_hour=22):
-    """Hypothetical extra freighter sections, one a day from the day of reopening. Not in the OAG schedule."""
-    first_day = int((sc.NOW + 6) // 24)  # local day index of reopening
-    return [dict(id=f"Extra {lane} section {i + 1}", dest=lane, dep=24 * (first_day + i) + local_hour - 6, kind="FRT", tonnes=tonnes,
-                 local="", extra=True) for i in range(days)]
-
-
-def run(models, trials=None, seed=None, extra=None):
+def run(models, trials=None, seed=None):
     A = ASSUMPTIONS
     trials, seed = trials or A["trials"], A["seed"] if seed is None else seed
     rng = np.random.default_rng(seed)
-    flights = sorted(oag_flights() + (extra or []), key=lambda r: r["dep"])
+    flights = sorted(oag_flights(), key=lambda r: r["dep"])
     pc, fc_ = A["closurePassenger"], A["closureFreighter"]
     cancelled = [f for f in flights if (f["kind"] == "PAX" and pc[0] <= f["dep"] < pc[1]) or (f["kind"] == "FRT" and fc_[0] <= f["dep"] < fc_[1])]
     after = [f for f in flights if f not in cancelled and f["dep"] >= sc.NOW]
@@ -131,20 +124,12 @@ def run(models, trials=None, seed=None, extra=None):
 
 
 def forecast(models):
-    """Base forecast plus one lever: an extra Los Angeles freighter a day for four days."""
-    base = run(models)
-    lever = run(models, extra=extra_sections())
-    b, l = base["overall"]["p50"], lever["overall"]["p50"]
-    base["lever"] = dict(label="One extra 747-8F to Los Angeles each night for 4 days", lane="LAX", days=4,
-                         overall=lever["overall"], lanes=[dict(lane=x["lane"], clearHours=x["clearHours"]) for x in lever["lanes"]],
-                         p50HoursEarlier=round(b - l, 1) if b is not None and l is not None else None,
-                         fan=lever["fan"])
-    return base
+    """Back to normal forecast over the real schedule."""
+    return run(models)
 
 
 if __name__ == "__main__":
     import json
     models, _ = fc.train()
     out = forecast(models)
-    print("lever", out["lever"]["p50HoursEarlier"], out["lever"]["overall"]["p50"])
     print(json.dumps(dict(overall=out["overall"], lanes=[(l["lane"], l["cancelledFlights"], l["initialBacklogTonnes"], l["clearHours"]["p10"], l["clearHours"]["p50"], l["clearHours"]["p90"], l["clearHours"]["clearedWithinSchedule"]) for l in out["lanes"]]), indent=1))

@@ -224,5 +224,4 @@ export interface BacklogForecast {
   lanes: BacklogLane[];
   overall: ClearSummary;
   fan: Fan;
-  lever: { label: string; lane: string; days: number; overall: ClearSummary; lanes: { lane: string; clearHours: ClearSummary }[]; p50HoursEarlier: number | null; fan: Fan };
 }

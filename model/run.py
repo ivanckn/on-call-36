@@ -96,10 +96,9 @@ def assignment_risks(ships, fl):
     return risks, risk_cost, card
 
 
-def compute(forced=None, cap_scale=None, delays=None, n_eval=N_EVAL, with_compare=True):
-    """Build the scenario, forecast, screen, optimise and explain. All arguments are optional what if inputs:
-    forced {awb: flight}, cap_scale {flight: factor on usable capacity}, delays {flight: hours}."""
-    forced, cap_scale = forced or {}, cap_scale or {}
+def build_problem(cap_scale=None, delays=None, n_eval=N_EVAL):
+    """Scenario, capacity forecast and samples, time risk and the screened Problem. Shared by compute() and mcp_server.py."""
+    cap_scale = cap_scale or {}
     fl = sc.flights(delays)
     ret = sc.ripple(fl)
     ships = sc.shipments(fl, ret)
@@ -119,6 +118,17 @@ def compute(forced=None, cap_scale=None, delays=None, n_eval=N_EVAL, with_compar
     card["regulatoryEligibility"] = dict(policyVersion=POLICY_VERSION, approvalScope="Simulated recovery legs",
                                           inputs="Verified declaration attributes and simulated per-package leg acceptance")
     pb = Problem(ships, fl, risks, risk_cost)
+    return dict(pb=pb, fl=fl, ret=ret, ships=ships, caps_plan=caps_plan, caps_eval=caps_eval, p50=p50, card=card,
+                risks=risks, risk_cost=risk_cost)
+
+
+def compute(forced=None, cap_scale=None, delays=None, n_eval=N_EVAL, with_compare=True):
+    """Build the scenario, forecast, screen, optimise and explain. All arguments are optional what if inputs:
+    forced {awb: flight}, cap_scale {flight: factor on usable capacity}, delays {flight: hours}."""
+    forced, cap_scale = forced or {}, cap_scale or {}
+    B = build_problem(cap_scale, delays, n_eval)
+    pb, fl, ret, ships, card = B["pb"], B["fl"], B["ret"], B["ships"], B["card"]
+    caps_plan, caps_eval, p50, risks, risk_cost = B["caps_plan"], B["caps_eval"], B["p50"], B["risks"], B["risk_cost"]
     for a, fid in forced.items():
         if a not in pb.by or fid not in fl:
             return dict(feasible=False, reason="Unknown shipment or flight.")
@@ -245,7 +255,7 @@ def main():
     models, _, _ = trained()
     clearance = backlog.forecast(models)
     dump("backlog.json", clearance)
-    print("backlog clear P50 T+%s, lever %sh earlier" % (clearance["overall"]["p50"], clearance["lever"]["p50HoursEarlier"]))
+    print("backlog clear P50 T+%s" % clearance["overall"]["p50"])
     print(json.dumps(base["summary"]), "|", json.dumps(base["solver"]))
 
 

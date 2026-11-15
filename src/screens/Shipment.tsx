@@ -4,6 +4,8 @@ import { IconBox, IconBuilding, IconCalendar, IconCherry, IconPhone, IconRoute, 
 import { JourneyStrip, type Leg } from '../components/JourneyStrip';
 import { KindChip, ModelStatusPill, Status, TierChip } from '../components/Status';
 import { RegPill, RegulatoryCard, RiskCard } from '../components/Explain';
+import { AiExplain } from '../components/AiExplain';
+import { shipmentFacts } from '../model/explainFacts';
 import { displacedFrom, flightMap, isMoved, isNotified } from '../model/plan';
 import { commodityName, fmtFlight, modelText, placeName, ruleText } from '../model/text';
 import { useT } from '../i18n';
@@ -141,6 +143,8 @@ export function Shipment() {
           )}
         </div>
       </section>
+
+      <AiExplain kind="shipment" facts={shipmentFacts(plan, s, state.holds)} />
 
       <section className="grid grid--2" aria-label={t('reg.title')}>
         <RegulatoryCard s={s} />

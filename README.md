@@ -6,7 +6,7 @@ A recovery engine for cargo disruption, built as a working prototype for Cathay 
 
 The name comes from September 2025, when Super Typhoon Ragasa suspended Hong Kong airport for about 36 hours.
 
-**Flights are the real Cathay Pacific (CX) schedule from OAG; everything else is simulated, and every screen says so.** Shipments, the delay, costs and the share of each flight open to recovery cargo are invented. The forecast models are trained on synthetic data. Costs are a unitless cost index, never money. No language model is used; reasons are templates. The demo itself makes no external call; the only live reads are the optional trigger sources on Monitor (HKO open data from the browser, OAG flight status through the local service). It sits on top of the airline's existing systems and refers only to "the cargo management system".
+**Flights are the real Cathay Pacific (CX) schedule from OAG; everything else is simulated, and every screen says so.** Shipments, the delay, costs and the share of each flight open to recovery cargo are invented. The forecast models are trained on synthetic data. Costs are a unitless cost index, never money. Every decision has a template reason computed by the model. An optional **explainable layer** then asks a language model (the HKUST GenAI API, `gpt-4.1-mini` by default) to put those numbers into plain words; it decides nothing, and every number it writes is checked against the model output. Live reads beyond the model are optional: HKO open data from the browser, OAG flight status through the local service, and the language model through a server function. It sits on top of the airline's existing systems and refers only to "the cargo management system".
 
 ## Run it
 
@@ -47,7 +47,7 @@ The UI is in English by default. The **中文** button switches every label and 
 
 0. **Disruption alert.** On opening, a dialog announces the event: `CX 360` delayed 9h, 30 shipments affected, 3 need a person, 1 will arrive late, and when normal is forecast. Acknowledge it; a banner stays at the top of every page with links to the exceptions. Changes that create a new exception or a late shipment, blocked overrides and held batches raise a toast. **Reset demo** brings the alert back.
 0b. **Where the disruption comes from** (Monitor). Three tabs. **Simulated event** is the timeline that drives the demo: Typhoon Signal No. 8 at T+36h, closure, reopening at T+72h, then the delay notice for `CX 360`. **HKO weather** reads the Hong Kong Observatory warning summary and nine day forecast live and says whether a warning in force would open an incident (Signal No. 3 or higher, red or black rainstorm, thunderstorm). **OAG flight status** reads today's CX departures from Hong Kong on our three lanes and flags any 60 minutes or more late. Live data never changes the demo plan. A live HKO warning that would open an incident also raises a toast.
-1. **Monitor** (`/`). Now is T+72h, the airport has just reopened. `CX 360` to Shanghai is delayed 9h. The ripple shows the three groups of cargo it touches: cargo on `CX 360`, cargo out of Shanghai on the same aircraft's return `CX 381`, and three connections in Hong Kong to `CX 2090` that now break. **Back to normal** shows the Monte Carlo forecast of when the closure backlog is cleared, and what one extra freighter a night would change.
+1. **Monitor** (`/`). Now is T+72h, the airport has just reopened. `CX 360` to Shanghai is delayed 9h. The ripple shows the three groups of cargo it touches: cargo on `CX 360`, cargo out of Shanghai on the same aircraft's return `CX 381`, and three connections in Hong Kong to `CX 2090` that now break. **Back to normal** shows the Monte Carlo forecast of when the closure backlog is cleared.
 2. **Recovery** (`/recovery`). The board is already allocated: 26 of 30 affected shipments placed automatically, one placed late (consumer electronics, its connection broke), three for a person (medical isotopes, lithium metal cells, paint with incomplete packaging evidence).
 3. **Cherries** (`/shipment/160-77203615`). First leg `CX 178` from Melbourne on time, second leg `CX 360` delayed 9h, would miss the promise by 5.2h, moved to `CX 380` and arrives 2.2h inside it. Garments made the room.
 4. **Garments** (`/shipment/160-77204982`). General cargo moved automatically to the freighter `CX 2058`, still 16.8h inside its promise. The forwarder is informed, not asked.
@@ -65,6 +65,32 @@ Live moments for the judges, on the Recovery page:
 
 Offline, the controls play back the pre computed cases in `model/out/overrides.json` and `whatifs.json`; other controls say they need the live service.
 
+## The explainable layer (AI)
+
+The engine computes every number. The language model only explains them.
+
+* **Where.** An **AI briefing** card on Monitor, an **AI explanation** card on each shipment, and **What changed, in plain words** under each live or played back change on Recovery. Nothing is called until someone presses the button.
+* **What the model sees.** Only the facts the engine already produced: the decision, the template reason, both costs, the critical ratio, the chance it fits, the blocking rule of every other flight, the dangerous goods screen and the time risk. **What the AI was given** shows the exact input.
+* **Guard rails.** Fixed instructions: use only the facts, never invent a number, never propose another decision, costs are a unitless index. Temperature 0. English, or formal written Traditional Chinese.
+* **Number check.** Every number in the answer is matched against the facts, allowing rounding and percentages. Anything that cannot be traced is highlighted and the card says so. The engine's own reason stays the record.
+* **Key.** `api/explain.ts` runs as a Vercel Edge Function. It uses the HKUST GenAI API (OpenAI compatible) when `HKUST_GENAI_KEY` is set, with `GENAI_MODEL` to pick another model from the platform, otherwise Anthropic when `ANTHROPIC_API_KEY` is set. Keys stay on the server; the browser never sees them. Without a key the card says the layer is off and everything else works. Tested on the HKUST API with `gpt-4.1-mini`: about 4 seconds per answer, and every number in the test answers traced to the model output.
+
+```bash
+npx vercel env add HKUST_GENAI_KEY production   # on Vercel, then npx vercel --prod
+```
+
+Locally, put `HKUST_GENAI_KEY=...` in `.env.local` (git ignored) before `npm run dev`; the dev server serves `/api/explain` too.
+
+**Ask the model directly (MCP).** `model/mcp_server.py` exposes five read-only tools to an MCP host such as Claude Desktop: recovery snapshot by lane, test a booking override, regulatory eligibility with a shared dry ice check, time sensitivity and deferral ranking, and a capacity stress test. The language model calls the real optimiser and explains the result. Add this to the host's MCP configuration (absolute paths):
+
+```json
+{ "mcpServers": { "on-call-36": { "command": "/ABSOLUTE/PATH/on-call-36/model/.venv/bin/python", "args": ["/ABSOLUTE/PATH/on-call-36/model/mcp_server.py"] } } }
+```
+
+Suggested question: "Compare the standalone lithium-ion batteries with the electronics shipment. Which rule applies on each recovery leg? Then check whether the cherries and the chilled seafood can share CX 380 given their combined dry ice."
+
+The brief asked for no language model. The team changed that: the language model is a presentation layer on top of the template reasons, never the source of a decision or a number.
+
 ## The model in plain words
 
 The model lives in `model/` (Python) and is the single source of truth; see `model/README.md`. The app does not re implement it. It merges three pieces of team work.
@@ -77,7 +103,7 @@ The model lives in `model/` (Python) and is the single source of truth; see `mod
 5. **Two costs per shipment.** Underbooking: waiting, lateness, promise breach, spoilage, learned risk. Overbooking: re handling, time out of the cool room, a service penalty. The critical ratio is overbooking cost over the sum: planned if the chance it fits is above it.
 6. **Optimise.** A two stage stochastic mixed integer program per lane with HiGHS, 40 capacity scenarios, whole shipment offloads, and hard rules never traded off.
 7. **Compare.** Scored on 1,000 fresh capacity scenarios with a replay that rebooks offloaded cargo, against two reference rules and two ablations.
-8. **Back to normal, Monte Carlo** (`model/backlog.py`). Every departure inside the closure is cancelled and the cargo it would have carried becomes the lane backlog. 1,000 trials each draw usable capacity per flight from the forecast model, normal demand, and extra cancellations after reopening, then drain each lane in departure order over the real schedule to 30 November. Result: about 894 tonnes stuck from 32 cancelled departures; back to normal by Friday 27 November at the median (P10 to P90: Thursday 26 to Monday 30). Tokyo clears first (Friday 20), Shanghai next (Saturday 21), Los Angeles last. One hypothetical extra 747-8F to Los Angeles each night for four nights brings normal forward by about 2.6 days.
+8. **Back to normal, Monte Carlo** (`model/backlog.py`). Every departure inside the closure is cancelled and the cargo it would have carried becomes the lane backlog. 1,000 trials each draw usable capacity per flight from the forecast model, normal demand, and extra cancellations after reopening, then drain each lane in departure order over the real schedule to 30 November. Result: about 894 tonnes stuck from 32 cancelled departures; back to normal by Friday 27 November at the median (P10 to P90: Thursday 26 to Monday 30). Tokyo clears first (Friday 20), Shanghai next (Saturday 21), Los Angeles last.
 
 | Policy (1,000 scenarios, 60 shipments) | Expected cost index | Promises kept | Avg hours late, PRS and PR1 |
 |---|---|---|---|
@@ -118,6 +144,7 @@ No airline logo, brand asset, internal document or internal system name is used.
 * Known model issue, reported to the model owners: the published `overbookingCost` excludes the waiting term, while the bump order is sorted by the optimiser's full bump cost. On some flights the published numbers are therefore not in ascending order. The app test marks this as a known issue rather than hiding it.
 * SHAP contributions sum to within 0.4% of the median forecast; the waterfall shows any residual of 5 kg or more as its own bar.
 * OAG: the free tier returns at most 10 flights per request; a few busy days on the Tokyo lane return exactly 10, so some flights may be missing there. That would make the back to normal forecast slower, not faster. Only derived schedule fields are committed; check the OAG licence before publishing the repository. OAG keys must stay in the environment; the keys shared in chat during the hackathon should be regenerated.
+* The AI explanation needs a key on the server and sends the facts shown in the card to the HKUST GenAI API (or Anthropic). The number check catches invented figures, not wrong wording; the engine's reason is the record. The public endpoint has no login and the HKUST API allows 60 requests a minute on a prepaid credit, so anyone with the link can use up the credit.
 * Trigger sources: the disruption that drives the demo is simulated. HKO and OAG are read live only to show what would trigger an incident on a real day. The HKO impact rules are a rule of thumb, not airport procedure. The OAG status parser (`model/status.py`) follows OAG's documented `Content=Status` option but has not yet been checked against a live status response; the free tier may return schedule without status, and the card says so.
 * The back to normal forecast uses lane level tonnage, not individual shipments, and assumes normal demand returns at its usual level from reopening.
 * Demo state (holds, the last what if, language) is kept in this browser only.
